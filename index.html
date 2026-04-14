@@ -1,0 +1,66 @@
+<Doctype html>
+<html>
+<head>
+     <title>Resume Analyzer</title>
+     <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
+            text-align: center;
+        }
+        input, button {
+            display: block;
+            margin: 10px auto;
+        }
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f0fe;
+    border-radius: 8px;
+}
+p {
+    font-size: 16px;
+}
+</style>
+</head>
+</body>
+
+<div class="container">
+    <h2>Resume Analyzer</h2>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="resume" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if data %}
+<div class="result"
+     <h3>Extracted Information</h3>
+     <p><b>Name:</b> {{ data['name'] }}</p>
+     <p><b>Email:</b> {{data['email'] }}</p>
+     <p><b>Phone:</b> {{ data['phone'] }}</p>
+     <p><b>Skills:</b> {{ data['skills'] }}</p>
+     <p><b>Education:</b> {{ data['education'] }}</p>
+     <p><b>Experience:</b> {{ data['experience'] }}</p>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
